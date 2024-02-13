@@ -1,0 +1,6 @@
+Um array é uma lista. Seus elementos são dispostos em sequencia e possuem um tamonho pré determidado. Em JavaScript existem metodos para manipular os elementos de array como adicionar, inserir no meio, remover do inicio, etc. Esses metodos são custosos uma vez que precisam deslocar o array inteiro uma vez que os elementos são armazenados de forma sequancial na memoria.
+As listas ligadas é uma sequencia de elementos chamados de nós (nodes), e cada nó possue um valor e uma referencia ( ponteiro) para o proximo nó.
+Uma vantantagem da lista ligada sobre os arrays é que não é necessario deslocar os elementos  quando eles são adicionados ou removidos.
+Em contrapartida temos que usar ponteiros para rastrear os elementos da lista ligada. Se quisermos encontra um elemento elemento da lista ligada precisamos partir do head (primeiro elemento) e iterar em direção ao tail (ultimo elemento) para encontra-lo.
+Nota sobre ponteiros: quando trabalhamos com objetos em JavaScript na verdade manipulamos as referencias a memoria em que os objetos estão armazenados. Portanto, quando atribuimos ao .next o proximo nó na verdade estamos fazendo uma referencia à posição da memoria dele, e nao ao valor.
+
