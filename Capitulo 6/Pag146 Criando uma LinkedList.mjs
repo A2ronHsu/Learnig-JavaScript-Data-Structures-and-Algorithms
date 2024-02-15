@@ -138,13 +138,6 @@ export default class LinkedList{
         }
         return objString;
     }
-
-
-
-
-
-
-    
 }
 
 const list = new LinkedList();
@@ -164,4 +157,3 @@ console.log(list.toString());
 
 //console.log(list.removeAt(1));
 //console.log(list); // parece um objeto dentro de um objeto que está dentro de um objeto
-
