@@ -61,8 +61,8 @@ class DoublyLinkedList extends LinkedList{ //extendendo DoublyLinkedList como fi
             let current = this.head; // inicializamos current com o primeiro elemento
             if ( index === 0){ //index é o pri
                 this.head = current.next; // se quisermos remover o primiro elemento da lista basta fazer this head apontar para o proximo elemento da lista, current.next
-                if( this.count === 1){// se a lista tiver somente 1 elemento
-                    this.tail = undefined; // faremos tail apontar para undefined, para a remover a referencia do node pelo .prev
+                if( this.count === 1){// se a lista tiver somente 1 elemento, então tail tambem estará fazendo referencia para current
+                    this.tail = undefined; // entao faremos tail apontar para undefined, para a remover a referencia de tail ao primeiro elemento
                 }else{
                     this.head.prev = undefined 
                 }
