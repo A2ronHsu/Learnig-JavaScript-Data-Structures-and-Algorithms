@@ -79,6 +79,22 @@ class DoublyLinkedList extends LinkedList{ //extendendo DoublyLinkedList como fi
             }
         return undefined; // se index não for um valor valido, retornamos undefined
     }
+
+    push(element){
+        const node = new DoublyNode(element);
+        let current = this.tail;
+        if(this.tail == null && this.size() === 0){
+            this.head = node;
+            this.tail = node;
+        }else{
+            current.next = node;
+            node.prev = current;
+            this.tail = node;
+        }
+        this.count++;
+    }
+
+
 }
 
 const list = new DoublyLinkedList;
@@ -88,7 +104,11 @@ list.insert(3,2)
 list.insert(['oi', 'mundo'],3)
 list.insert('fim',4)
 list.insert('fim',9)
-
-
-
+list.push('pushed');
+list.push('pushing');
+list.push('pushing 2');
+console.log(list.toString());
 console.log(list);
+
+
+
