@@ -2,6 +2,8 @@ import LinkedList from "./Pag146 Criando uma LinkedList.mjs";
 import { defaultEquals } from "./defaultEquals.mjs";
 import { Node } from "./Node.mjs";
 
+
+
 //extends é uma palavra-chave usada em classes para criar uma nova classe como uma extensão de uma classe existente, permitindo a herança de propriedades e métodos da classe pai (superclasse). A classe filha (subclasse) herda todos os métodos e propriedades da classe pai. Isso permite que você reutilize o código e estabeleça uma relação de hierarquia entre as classes.
 
 //Em JavaScript, super é uma palavra-chave que é usada dentro de métodos de uma classe filha (subclasse) para chamar métodos da classe pai (superclasse). Isso é especialmente útil quando você está estendendo uma classe e deseja acessar métodos ou propriedades da classe pai. super() pode ser usado para chamar metodos ou o construtor da classe pai.
@@ -59,8 +61,8 @@ class DoublyLinkedList extends LinkedList{ //extendendo DoublyLinkedList como fi
             let current = this.head; // inicializamos current com o primeiro elemento
             if ( index === 0){ //index é o pri
                 this.head = current.next; // se quisermos remover o primiro elemento da lista basta fazer this head apontar para o proximo elemento da lista, current.next
-                if( this.count === 1){// se a lista tiver somente 1 elemento
-                    this.tail = undefined; // faremos tail apontar para undefined, para a remover a referencia do node pelo .prev
+                if( this.count === 1){// se a lista tiver somente 1 elemento, então tail tambem estará fazendo referencia para current
+                    this.tail = undefined; // entao faremos tail apontar para undefined, para a remover a referencia de tail ao primeiro elemento
                 }else{
                     this.head.prev = undefined 
                 }
