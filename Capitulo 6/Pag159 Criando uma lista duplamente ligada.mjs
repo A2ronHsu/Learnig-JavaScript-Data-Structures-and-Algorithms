@@ -97,18 +97,18 @@ class DoublyLinkedList extends LinkedList{ //extendendo DoublyLinkedList como fi
 
 }
 
-const list = new DoublyLinkedList;
-list.insert('teste', 0)
-list.insert('2',1)
-list.insert(3,2)
-list.insert(['oi', 'mundo'],3)
-list.insert('fim',4)
-list.insert('fim',9)
-list.push('pushed');
-list.push('pushing');
-list.push('pushing 2');
-console.log(list.toString());
-console.log(list);
+// const list = new DoublyLinkedList;
+// list.insert('teste', 0)
+// list.insert('2',1)
+// list.insert(3,2)
+// list.insert(['oi', 'mundo'],3)
+// list.insert('fim',4)
+// list.insert('fim',9)
+// list.push('pushed');
+// list.push('pushing');
+// list.push('pushing 2');
+// console.log(list.toString());
+// console.log(list);
 
 
 

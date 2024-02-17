@@ -140,20 +140,20 @@ export default class LinkedList{
     }
 }
 
-const list = new LinkedList();
+// const list = new LinkedList();
 
-list.push('oi');
-list.push('teste');
-list.push('ABC');
-list.push(3);
-list.insert('inserted',0);
+// list.push('oi');
+// list.push('teste');
+// list.push('ABC');
+// list.push(3);
+// list.insert('inserted',0);
 
-console.log(list.indexOf(3));
-console.log(list.isEmpty());
-console.log(list.size());
-console.log(list.getHead());
-console.log(list.toString());
+// console.log(list.indexOf(3));
+// console.log(list.isEmpty());
+// console.log(list.size());
+// console.log(list.getHead());
+// console.log(list.toString());
 
 
-//console.log(list.removeAt(1));
-//console.log(list); // parece um objeto dentro de um objeto que está dentro de um objeto
+// console.log(list.removeAt(1));
+// console.log(list); // parece um objeto dentro de um objeto que está dentro de um objeto
