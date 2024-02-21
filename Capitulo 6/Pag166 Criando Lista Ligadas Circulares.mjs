@@ -35,35 +35,35 @@ class CircularLinkedList extends LinkedList{
     }
 
     removeAt(index){
-        if(index >=0 && index <=this.count){
-            const current = this.head;
+        if(index >=0 && index <this.count){
+            let current = this.head;
             if( index === 0){
                 if(this.count === 1){
                     this.head = undefined;
                 }else{
-                    const removed = this.head;
-                    this.head = current.next;
+                    const removed = current;
                     current = this.getElementAt(this.count-1);
+                    console.log(current);
+                    this.head = this.head.next;
                     current.next = this.head;
                     current = removed;
                 }
             }else{
-
+                let previous = this.getElementAt(index-1);
+                current = previous.next;
+                previous.next = current.next;                
             }
-            return true;
+            this.count--;
+            return current.element;
         }
         return undefined;
     }
-
-
-
-
-
 }
 
 let list = new CircularLinkedList();
-console.log(list.insert(0,0));
+console.log(list.insert('a',0));
 list.insert(1,1);
 list.insert(2,2);
 console.log(list.insert(3,3));
+console.log(list.removeAt(3));
 console.log(list);
