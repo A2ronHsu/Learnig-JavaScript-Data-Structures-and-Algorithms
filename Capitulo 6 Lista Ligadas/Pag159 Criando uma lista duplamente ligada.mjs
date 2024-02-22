@@ -15,7 +15,7 @@ class DoublyNode extends Node{ //extedendo DoublyNode como filha de Node
     }
 }
 
-export class DoublyLinkedList extends LinkedList{ //extendendo DoublyLinkedList como filha de LinkedList
+class DoublyLinkedList extends LinkedList{ //extendendo DoublyLinkedList como filha de LinkedList
     constructor(equalsFn = defaultEquals){ 
         super(equalsFn); //chamando a função construtora mae
         this.tail = undefined; //acresncentando o final a referencia ao final da lista
@@ -112,6 +112,5 @@ export class DoublyLinkedList extends LinkedList{ //extendendo DoublyLinkedList 
 // console.log(list.toString());
 // console.log(list);
 
-export {DoublyLinkedList};
 
 
