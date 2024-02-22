@@ -69,26 +69,72 @@ class Set {
         return value;
     }
 
+    union(otherSet){
+        const unionSet = new Set();
+        this.values().forEach( value => unionSet.add(value));
+        otherSet.values().forEach(value => unionSet.add(value));
+        return unionSet;
+    }
+
+    //intersection iterando por todos os elementos
+    // intersection(otherSet){
+    //     const intersectionSet = new Set();
+    //     const values = this.values();
+    //     values.forEach(elem =>{
+    //         if (otherSet.has(elem)) intersectionSet.add(elem);
+    //     })
+    //     return intersectionSet;
+    // }
+
+    intersection(otherSet){
+        const intersectionSet =new Set();
+        const values =this.values();
+        const otherValues = otherSet.values();
+        let biggerSet = values;
+        let smallerSet = otherValues;
+        if( values.length < otherValues.length){
+            biggerSet = otherValues;
+            smallerSet = values;
+        }
+        smallerSet.forEach(value => {
+            if (biggerSet.includes(value)){
+                intersectionSet.add(value);
+            }
+        })
+        return intersectionSet;
+    }
+
+    difference(otherSet){
+        const differenceSet = new Set();
+        this.values().forEach(value=>{
+            if( otherSet.has(value)){
+                differenceSet.add(value);
+            }
+        });
+        return differenceSet;
+    }
+
+    isSubsetOf(otherSet){
+        const isSubset = true
+    }
 
 }
 
-const set = new Set();
+const setA= new Set();
+let setB = new Set();
 
-set.add(1);
-console.log(set.values());
-console.log(set.has(1),1);
-console.log(set.size(),1);
-set.add(2);
-console.log(set.values());
-console.log(set.has(2),2);
-console.log(set.size(),2);
-set.delete(1);
-console.log(set.values());
-set.delete(2);
-console.log(set.values());
+setA.add(1);
+setA.add(2);
+setA.add(3);
+setB.add(4);
+setB.add(5);
+setB.add(6);
 
 
+let setAUB = setA.union(setB);
+console.log(setAUB);
 
-
-
-
+console.log(setB)
+console.log(setAUB.intersection(setB))
+setB.delete(6);
+console.log(setA.difference(setAUB));
