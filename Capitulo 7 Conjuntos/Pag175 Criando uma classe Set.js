@@ -115,7 +115,16 @@ class Set {
     }
 
     isSubsetOf(otherSet){
-        const isSubset = true
+        const isSubset = true;
+        if(this.size() > otherSet.size()) return false;
+        this.values().every(value =>{
+            if(!otherSet.has(value)){
+                isSubset = false;
+                return false;
+            }
+            return true;
+        })
+        return isSubset;
     }
 
 }
@@ -138,3 +147,8 @@ console.log(setB)
 console.log(setAUB.intersection(setB))
 setB.delete(6);
 console.log(setA.difference(setAUB));
+console.log(setB.isSubsetOf(setAUB));
+console.log(setAUB.isSubsetOf(setB));
+setAUB.clear()
+console.log(setAUB);
+console.log(setAUB.isSubsetOf(setB));
