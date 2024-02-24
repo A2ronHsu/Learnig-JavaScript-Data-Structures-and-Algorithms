@@ -2,7 +2,8 @@
 //algumas novos metodos foram adcionados em 2024, mas não está disponivel em node v20, portando vamos fazer nós mesmos funções para simular as operações entre conjuntos
 
 const union = (set1, set2)=>{
-    const unionSet = new Set([...set1.values(), ...set2.values()]);
+    let unionSet = set1;
+    set2.forEach(elem=> unionSet.add(elem));
     return unionSet;
 }
 
@@ -47,3 +48,7 @@ console.log('union',union(set1, set2));
 console.log('intersection',intersection(set1, set2));
 console.log('difference',difference(set1, set2));
 console.log('difference',difference(set2, set1));
+
+let unionSet = union(set1,set2);
+let arr = [...unionSet];
+console.log(arr);
