@@ -79,7 +79,7 @@ export default class Dictionary{
         return objString;
     }
 }
-
+/*
 const dictionary = new Dictionary();
 
 dictionary.set('Gandalf', 'gandalf@email.com');
@@ -101,3 +101,4 @@ console.log('dictionary.values()', dictionary.values());
 console.log('dictionary.keyValues()', dictionary.keyValues())
 
 dictionary.forEach((k, v)=> console.log('forEach: ', `key: ${k}`, `value: ${v}` ))
+*/
