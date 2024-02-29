@@ -1,6 +1,6 @@
 import { defaultToString } from "./defaultToString.mjs";
 import { ValuePair } from "./ValuePair.mjs";
-class HashTable{
+export class HashTable{
     constructor(toStrFn = defaultToString){
         this.toStrFn = toStrFn;
         this.table = {};
@@ -78,20 +78,34 @@ class HashTable{
  
 }
 
-const hash = new HashTable();
-hash.put('Gandalf', 'gandalf@email.com')
-hash.put('Jonh', 'jonh@email.com')
-hash.put('Tyrion', 'tyrion@email.com')
-console.log(hash.hashCode('Gandalf'), '- Gandalf')
-console.log(hash.hashCode('Jonh'), '- Jonh')
-console.log(hash.hashCode('Tyrion'), '- Tyrion')
+// const hash = new HashTable();
+// hash.put('Gandalf', 'gandalf@email.com')
+// hash.put('Jonh', 'jonh@email.com')
+// hash.put('Tyrion', 'tyrion@email.com')
+// console.log(hash.hashCode('Gandalf'), '- Gandalf')
+// console.log(hash.hashCode('Jonh'), '- Jonh')
+// console.log(hash.hashCode('Tyrion'), '- Tyrion')
 
-console.log(hash.get('Gandalf'))
-console.log(hash.get('Aaron')) // meu nome tem o mesmo hashCode que Tyrion
+// console.log(hash.get('Gandalf'))
+// console.log(hash.get('Aaron')) // meu nome tem o mesmo hashCode que Tyrion
 
-//hash.put('Aaron', 'aaron@email.com');
-console.log(hash.get('Tyrion'), 'Tyrion'); 
+// //hash.put('Aaron', 'aaron@email.com');
+// console.log(hash.get('Tyrion'), 'Tyrion'); 
 
-//hash.remove('Gandalf');
-console.log(hash.toString())
+// //hash.remove('Gandalf');
+// console.log(hash.toString())
+// hash.clear();
 
+// hash.put('Ygritte' , 'Ygrite@email.com');
+// hash.put('Jonathan' , 'Jonathan@email.com');
+// hash.put('Jamie' , 'jamie@email.com');
+// hash.put('Jack' , 'jack@email.com');
+// hash.put('Jasmine' , 'jasmine@email.com');
+// hash.put('Jake' , 'jake@email.com');
+// hash.put('Nathan' , 'nathan@email.com');
+// hash.put('Athelstan' , 'athelstan@email.com');
+// hash.put('Sue' , 'sue@email.com');
+// hash.put('Aethelwulf' , 'aethewulf@email.com');
+// hash.put('Sargeras' , 'sargeras@email.com');
+
+// console.log(hash);

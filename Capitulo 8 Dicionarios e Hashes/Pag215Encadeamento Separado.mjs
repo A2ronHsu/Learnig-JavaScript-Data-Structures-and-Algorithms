@@ -2,6 +2,7 @@
 
 import { defaultToString } from "./defaultToString.mjs";
 import { LinkedList} from "./LinkedList.mjs" 
+import { ValuePair } from "./ValuePair.mjs";
 class HashTableSeparateChaining{
     constructor(toStrFn = defaultToString){
         this.toStrFn = toStrFn;
@@ -37,6 +38,55 @@ class HashTableSeparateChaining{
         return false;
     }
 
-    
+    get(key){
+        const position = this.hashCode(key);
+        const linkedList = this.table[position];
+        if( linkedList != null && !linkedList.isEmpty()){
+            let current = linkedList.getHead();
+            while(current != null){
+                if(current.element.key === key){
+                    return current.element.value;
+                }
+                current = current.next;
+            }
+        }
+        return undefined;
+    }
+
+    remove(key){
+        const position = this.hashCode(key);
+        const linkedList = this.table[position];
+        if(linkedList != null && !linkedList.isEmpty()){
+            let current = linkedList.getHead();
+            while ( current != null){
+                if (current.element.key === key){
+                    linkedList.remove(current.element);
+                    if(linkedList.isEmpty()){
+                        delete this.table[position];
+                    }
+                    return true;
+                }
+                current = current.next;
+            }
+        }
+        return false;
+    }
 }
 
+let hash = new HashTableSeparateChaining();
+hash.put('Ygritte' , 'Ygrite@email.com');
+hash.put('Jonathan' , 'Jonathan@email.com');
+hash.put('Jamie' , 'jamie@email.com');
+hash.put('Jack' , 'jack@email.com');
+hash.put('Jasmine' , 'jasmine@email.com');
+hash.put('Jake' , 'jake@email.com');
+hash.put('Nathan' , 'nathan@email.com');
+hash.put('Athelstan' , 'athelstan@email.com');
+hash.put('Sue' , 'sue@email.com');
+hash.put('Aethelwulf' , 'aethewulf@email.com');
+hash.put('Sargeras' , 'sargeras@email.com');
+hash.remove("Jasmine");
+hash.remove("Jonathan");
+
+console.log(hash);
+console.log(hash.get("Athelstan"));

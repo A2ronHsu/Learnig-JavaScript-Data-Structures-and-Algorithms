@@ -1,6 +1,6 @@
 import {Node} from "./Node.mjs";
 import { defaultEquals } from "./defaultEquals.mjs";
-export default class LinkedList{
+export class LinkedList{
     constructor(equalsFn = defaultEquals){
         this.count = 0;
         this.head = undefined; //aqui head não aponta para nada
