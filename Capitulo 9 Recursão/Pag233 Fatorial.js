@@ -10,10 +10,11 @@ function fatorialIterative(n){
 
 //usando recursão
 function fatorialRecursive(n){
+    console.trace();
     if ( n === 0 || n === 1){
         return 1;
     }else{
         return n*fatorialRecursive(n-1);
     }
 }
-console.log(fatorialRecursive(8));
+console.log(fatorialRecursive(3));
