@@ -29,7 +29,7 @@ export default class BinarySearchTree{
     insertNode(node, key){
         if(this.compareFn(key, node.key) === Compare.LESS_THAN){
             if(node.left == null){
-                node.left == new Node (key);
+                node.left = new Node(key);
             }else{
                 this.insertNode(node.left, key);
             }
