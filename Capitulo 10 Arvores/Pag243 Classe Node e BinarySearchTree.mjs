@@ -42,19 +42,62 @@ export default class BinarySearchTree{
         }
     }
 
+    //precorrendo a arvore in-order, em ordem crescente de seus valores
+    inOrderTraverse(callback){
+        this.inOrderTraverseNode(this.root, callback);
+    }
+    inOrderTraverseNode(node, callback){
+        if( node != null){
+            this.inOrderTraverseNode(node.left, callback);
+            callback(node.key);
+            this.inOrderTraverseNode(node.right, callback);
+        }
+    }
+    
+    //percorrendo a arvore pre-order, visitando o nó atual antes de seus  descendentes.
+    preOrderTraverse(callback){
+        this.preOrderTraverseNode(this.root, callback);
+    }
+    preOrderTraverseNode(node, callback){
+        if (node != null){
+            callback(node.key);
+            this.preOrderTraverseNode(node.left, callback);
+            this.preOrderTraverseNode(node.right, callback);
+        }
+    }
 
+    //percorrendo a árvore
+    postOrderTraverse(callback){
+        this.postOrderTraverseNode(this.root, callback);
+    }
+    postOrderTraverseNode(node, callback){
+        if (node != null){
+            this.postOrderTraverseNode(node.left, callback);
+            this.postOrderTraverseNode(node.right, callback);
+            callback(node.key);
+        }
+    }
 
     search(key){}
 
-    inOrderTraverse(){}
 
-    preOrderTraverse(){}
 
-    postOrderTraverse(){}
+    
+    min(){
+        return this.minNode(this.root);
+    }
+    minNode(node){
+        if(node.left == null) return node.key;
+        return this.minNode(node.left);
+    }
 
-    min(){}
-
-    max(){}
+    max(){
+        return this.maxNode(this.root);
+    }
+    maxNode(node){
+        if(node.right == null) return node.key;
+        return this.maxNode(node.right);
+    }
 
     remove(key){}
 
@@ -79,5 +122,15 @@ tree.insert(14);
 tree.insert(20);
 tree.insert(18);
 tree.insert(25);
+tree.insert(6);
+//tree.insert('a');
 
-console.log(tree); 
+const printNode = (value) => console.log( value);
+//tree.inOrderTraverse(printNode);
+//tree.preOrderTraverse(printNode);
+//tree.postOrderTraverse(printNode);
+
+console.log(tree.min());
+console.log(tree.max());
+
+//console.log(tree); 
