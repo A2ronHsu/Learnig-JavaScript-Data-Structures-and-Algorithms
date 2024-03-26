@@ -82,7 +82,7 @@ export default class BinarySearchTree{
         return this.minNode(this.root);
     }
     minNode(node){
-        if(node.left == null) return node.key;
+        if(node.left == null) return node;
         return this.minNode(node.left);
     }
     
@@ -90,7 +90,7 @@ export default class BinarySearchTree{
         return this.maxNode(this.root);
     }
     maxNode(node){
-        if(node.right == null) return node.key;
+        if(node.right == null) return node;
         return this.maxNode(node.right);
     }
     
@@ -126,7 +126,7 @@ export default class BinarySearchTree{
             //key é igual a node.key
             //caso 1
             if( node.left == null && node.right == null){
-                node == null;
+                node = null;
                 return node;
             }
 
@@ -145,6 +145,7 @@ export default class BinarySearchTree{
             node.right = this.removeNode(node.right, aux.key);
             return node;
         }
+
     }
     
     
@@ -154,32 +155,35 @@ let tree = new BinarySearchTree();
 
 
 
-tree.insert(11);
-tree.insert(7);
-tree.insert(15);
-tree.insert(5);
-tree.insert(3);
-tree.insert(9);
-tree.insert(8);
-tree.insert(10);
-tree.insert(13);
-tree.insert(12);
-tree.insert(14);
-tree.insert(20);
-tree.insert(18);
-tree.insert(25);
-tree.insert(6);
-//tree.insert('a');
+// tree.insert(11);
+// tree.insert(7);
+// tree.insert(15);
+// tree.insert(5);
+// tree.insert(3);
+// tree.insert(9);
+// tree.insert(8);
+// tree.insert(10);
+// tree.insert(13);
+// tree.insert(12);
+// tree.insert(14);
+// tree.insert(20);
+// tree.insert(18);
+// tree.insert(25);
+// tree.insert(6);
+// tree.insert('a');
 
-const printNode = (value) => console.log( value);
-//tree.inOrderTraverse(printNode);
-//tree.preOrderTraverse(printNode);
-//tree.postOrderTraverse(printNode);
-
-// console.log(tree.min());
-// console.log(tree.max());
-console.log(tree.search(1));
-console.log(tree.search(8));
+// const printNode = (value) => console.log( value);
+// //tree.inOrderTraverse(printNode);
+// //tree.preOrderTraverse(printNode);
+// //tree.postOrderTraverse(printNode);
 
 
-//console.log(tree); 
+// // console.log(tree.min());
+// // console.log(tree.max());
+// console.log(tree.remove('a'));
+// console.log(tree.search('a'));
+// console.log(tree.remove());
+
+
+
+// //console.log(tree); 
