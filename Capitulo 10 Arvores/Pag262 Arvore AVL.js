@@ -1,5 +1,17 @@
-import BinarySearchTree from "./Pag243 Classe Node e BinarySearchTree.mjs"
-import { defaultCompare } from "./util.mjs"
+import BinarySearchTree, { Node } from "./Pag243 Classe Node e BinarySearchTree.mjs"
+import { Compare, defaultCompare } from "./util.mjs"
+
+//CONSTANTE PARA ENUMERAR OS CASOS 
+const BalanceFactor = {
+    UNBALANCED_RIGHT: 1,
+    SLIGHTLY_UNBALANCED_RIGHT: 2,
+    BALANCED:3,
+    SLIGHTLY_UNBALANCED_LEFT: 4,
+    UNBALANCED_LEFT: 5,
+    }
+
+
+
 
 class AVLTree extends BinarySearchTree{
     constructor(compareFn = defaultCompare){
@@ -19,14 +31,8 @@ class AVLTree extends BinarySearchTree{
     //fator de balanceamento: a diferenca de altura da direita de um nó com a esquerda dele deve ser igual a -1, 0 ou 1 para se considerar balanceada, caso não for esse o valor da diferença o nó está desbalanceado. 
     //a seguir vamos fazer um codigo que analisa o fator de balanço de um nó;
     getBalanceFactor(node){
-        //CONSTANTE PARA ENUMERAR OS CASOS 
-        const BalanceFactor = {
-        UNBALANCED_RIGHT: 1,
-        SLIGHTLY_UNBALANCED_RIGHT: 2,
-        BALANCED:3,
-        SLIGHTLY_UNBALANCED_LEFT: 4,
-        UNBALANCED_LEFT: 5,
-        }
+
+    
         const heightDifference = this.getNodeHeight(node.left)-this.getNodeHeight(node.right);
         switch(heightDifference){
             case -2:
@@ -64,6 +70,40 @@ class AVLTree extends BinarySearchTree{
     rotationRL(node){
         node.right = this.rotationLL(node.right);
         return this.rotationRR(node);
+    }
+
+    insert(key){
+        this.root = this.insertNode(this.root, key);   
+    }
+    insertNode(node, key){
+        if(node == null){
+            return new Node(key);
+        }else if(this.compareFn(key,node.key) === Compare.LESS_THAN){
+            node.left = this.insertNode(node.left,key);
+        }else if(this.compareFn(key,node.key) === Compare.BIGGER_THAN){
+            node.right = this.insertNode(node.right,key);
+        }else{
+            return node;
+        }
+
+        const balanceFactor = this.getBalanceFactor(node);
+        if (balanceFactor === BalanceFactor.UNBALANCED_LEFT){
+            if(this.compareFn(key,node.left.key) === Compare.LESS_THAN){
+                node = this.rotationLL(node)
+            }else{
+                return this.rotationLR(node);
+            }
+        }
+
+        if (balanceFactor === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT){
+            if(this.compareFn(key, node.right.key) === Compare.BIGGER_THAN){
+                node = this.rotationRR(node);
+            }else{
+                return this.rotationRL(node);
+            }
+        }
+
+        return node;
     }
 
 }
