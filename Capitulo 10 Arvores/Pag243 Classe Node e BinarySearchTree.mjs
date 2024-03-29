@@ -13,7 +13,7 @@ export class Node{
 
 import { Compare, defaultCompare } from "./util.mjs";
 
-export default class BinarySearchTree{
+export class BinarySearchTree{
     constructor( compareFn = defaultCompare){
         this.compareFn = compareFn;
         this.root = null;

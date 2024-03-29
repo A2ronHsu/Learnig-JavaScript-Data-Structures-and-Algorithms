@@ -1,4 +1,4 @@
-import BinarySearchTree, { Node } from "./Pag243 Classe Node e BinarySearchTree.mjs"
+import { BinarySearchTree, Node } from "./Pag243 Classe Node e BinarySearchTree.mjs"
 import { Compare, defaultCompare } from "./util.mjs"
 
 //CONSTANTE PARA ENUMERAR OS CASOS 
@@ -24,7 +24,6 @@ class AVLTree extends BinarySearchTree{
     getNodeHeight(node){
     if(node == null) return -1;
     let result = Math.max(this.getNodeHeight(node.left), this.getNodeHeight(node.right)) + 1;        
-    console.log(result);
     return result;
     }
 
@@ -66,7 +65,6 @@ class AVLTree extends BinarySearchTree{
         node.left = this.rotationRR(node.left);
         return this.rotationLL(node);
     }
-
     rotationRL(node){
         node.right = this.rotationLL(node.right);
         return this.rotationRR(node);
@@ -95,7 +93,7 @@ class AVLTree extends BinarySearchTree{
             }
         }
 
-        if (balanceFactor === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT){
+        if (balanceFactor === BalanceFactor.UNBALANCED_RIGHT){
             if(this.compareFn(key, node.right.key) === Compare.BIGGER_THAN){
                 node = this.rotationRR(node);
             }else{
@@ -106,15 +104,45 @@ class AVLTree extends BinarySearchTree{
         return node;
     }
 
+    removeNode(node, key){
+        node = super.removeNode(node, key);
+        if(node == null){
+            return node;
+        }
+        
+        const balanceFactor = this.getBalanceFactor(node);
+        if(balanceFactor === BalanceFactor.UNBALANCED_LEFT){
+            const balanceFactorLeft = this.getBalanceFactor(node.left);
+            if(balanceFactorLeft === BalanceFactor.BALANCED || balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT){
+                return this.rotationLL(node);
+            }
+            if(balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT){
+                return this.rotationLR(node);
+            }
+        }
+        if(balanceFactor === BalanceFactor.UNBALANCED_RIGHT){
+            const balanceFactorRight = this.getBalanceFactor(node.right);
+            if(balanceFactorRight === BalanceFactor.BALANCED || balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT){
+                return this.rotationRR
+            }
+            if( balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT){
+                return this.rotationRL(node.right);
+            }
+        }
+        return node;
+    }
 }
 
 let tree = new AVLTree();
 
-tree.insert(3);
-tree.insert(2);
-tree.insert(6);
-tree.insert(5);
-tree.insert(4);
-tree.insert(7);
+tree.insert(70);
+tree.insert(50);
+tree.insert(80);
+tree.insert(72);
+tree.insert(90);
+tree.insert(75);
+tree.remove(80);
 
-console.log(tree.getNodeHeight(tree.root));
+//console.log(tree.getNodeHeight(tree.root));
+console.log(tree);
+console.log(tree.getBalanceFactor(tree.root));
