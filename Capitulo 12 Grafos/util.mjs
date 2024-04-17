@@ -51,3 +51,17 @@ export function reverseCompare(compareFn) {
 export function defaultDiff(a, b) {
   return Number(a) - Number(b);
 }
+
+export const Colors = {
+  WHITE: 0,
+  GREY:1,
+  BLACK:2
+}
+
+export const initializeColors = vertices => {
+  const color = {}
+  for(let i = 0; i < vertices.length; i++){
+    color[vertices[i]] = Colors.WHITE;
+  }
+  return color;
+}
