@@ -70,7 +70,7 @@ export const initializeColors = vertices => {
 export function createNonSorted(size){
   const array = [];
   for (let i=size; i>0;i--){
-    array.push(i);
+    array.push(parseInt(Math.random()*100));
   }
   return array;
 }
