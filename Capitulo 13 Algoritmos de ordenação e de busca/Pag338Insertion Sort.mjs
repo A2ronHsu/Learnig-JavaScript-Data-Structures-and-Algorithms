@@ -1,6 +1,6 @@
 import { Compare, defaultCompare, createNonSorted } from "./util.mjs";
 
-function insertionSort(array, compareFn = defaultCompare){
+export function insertionSort(array, compareFn = defaultCompare){
     const {length} = array;
     let temp;
     for (let i = 1; i < length; i++){
@@ -15,7 +15,7 @@ function insertionSort(array, compareFn = defaultCompare){
     return array;
 }
 
-let array = createNonSorted(5);
-console.log(array.join());
-insertionSort(array);
-console.log(array.join());
+// let array = createNonSorted(5);
+// console.log(array.join());
+// insertionSort(array);
+// console.log(array.join());
